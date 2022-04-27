@@ -1,0 +1,80 @@
+{% extends 'base.html' %}
+
+{% block auth %}
+<div class="register-page">
+  <div class="register-box">
+    <div class="card card-outline card-primary">
+      <div class="card-header text-center">
+        <a href="" class="h1">DIT Admission</a>
+      </div>
+  
+      <form action="" method="post">
+        {% csrf_token %}
+        {% for message in messages %}
+          <div class="alert alert-success alert-dismissible fade show" role="alert">
+              <strong>{{ message }}</strong>
+              <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+          </div>
+        {% endfor %}
+        <div class="card-body">
+          <div class="input-group mb-3">
+            <input type="text" class="form-control" placeholder="First Name" id="first_name" name="first_name">
+            <div class="input-group-append">
+                <div class="input-group-text">
+                <span class="fas fa-user"></span>
+                </div>
+            </div>
+          </div>
+          <div class="input-group mb-3">
+            <input type="text" class="form-control" placeholder="Last Name" id="last_name" name="last_name">
+            <div class="input-group-append">
+                <div class="input-group-text">
+                <span class="fas fa-user"></span>
+                </div>
+            </div>
+          </div>
+          <div class="input-group mb-3">
+            <input type="text" class="form-control" placeholder="CSEE Number" id="csee_number" name="csee">
+            <div class="input-group-append">
+                <div class="input-group-text">
+                <span class="fas fa-hashtag"></span>
+                </div>
+            </div>
+          </div>
+          <div class="input-group mb-3">
+            <input type="email" class="form-control" placeholder="Email Address" id="email" name="email">
+            <div class="input-group-append">
+                <div class="input-group-text">
+                <span class="fas fa-envelope"></span>
+                </div>
+            </div>
+          </div>
+          <div class="input-group mb-3">
+            <input type="password" class="form-control" placeholder="Password" id="password1" name="password1">
+            <div class="input-group-append">
+                <div class="input-group-text">
+                <span class="fas fa-lock"></span>
+                </div>
+            </div>
+          </div>
+          <div class="input-group mb-3">
+            <input type="password" class="form-control" placeholder="Confirm Password" id="password2" name="password2">
+            <div class="input-group-append">
+                <div class="input-group-text">
+                <span class="fas fa-lock"></span>
+                </div>
+            </div>
+          </div>
+            <button type="submit" class="btn btn-primary my-3">Submit</button>
+            <br>
+            <a href="{% url 'login' %}" class="text-center b-3">I already have a membership</a>
+        </div>
+      
+      </form>
+      </div>
+  </div>
+</div>
+
+
+
+{% endblock auth %}
