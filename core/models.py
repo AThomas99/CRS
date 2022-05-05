@@ -34,3 +34,18 @@ class NectaCSEEReusltsAPI(models.Model):
     biology = models.CharField(max_length=10, null=False, blank=False)
     maths = models.CharField(max_length=10, null=False, blank=False)
     english = models.CharField(max_length=10, null=False, blank=False)
+
+
+class Department(models.Model):
+    name = models.CharField(max_length=200, null=False, blank=False)
+
+    def __str__(self):
+        return self.name
+
+
+class Course(models.Model):
+    name = models.CharField(max_length=200, null=False, blank=False)
+    department = models.ForeignKey(Department, on_delete=models.CASCADE, null=False, blank=False)
+    capacity = models.IntegerField()
+    duration = models.IntegerField()
+    
