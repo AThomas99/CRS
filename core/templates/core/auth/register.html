@@ -10,12 +10,7 @@
   
       <form action="" method="post">
         {% csrf_token %}
-        {% for message in messages %}
-          <div class="alert alert-success alert-dismissible fade show" role="alert">
-              <strong>{{ message }}</strong>
-              <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-          </div>
-        {% endfor %}
+
         <div class="card-body">
           <div class="input-group mb-3">
             <input type="text" class="form-control" placeholder="First Name" id="first_name" name="first_name">
@@ -65,9 +60,22 @@
                 </div>
             </div>
           </div>
-            <button type="submit" class="btn btn-primary my-3">Submit</button>
-            <br>
-            <a href="{% url 'login' %}" class="text-center b-3">I already have a membership</a>
+          <div class="row">
+            <div class="col-8">
+              <div class="icheck-primary">
+                <input type="checkbox" id="agreeTerms" name="terms" value="agree">
+                <label for="agreeTerms">
+                 I agree to the <a href="#">terms</a>
+                </label>
+              </div>
+            </div>
+            <!-- /.col -->
+            <div class="col-4">
+              <button type="submit" class="btn btn-primary btn-block">Register</button>
+            </div>
+            <!-- /.col -->
+          </div>
+          <a href="{% url 'login' %}" class="text-center">I already have a membership</a>
         </div>
       
       </form>

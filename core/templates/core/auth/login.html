@@ -2,63 +2,68 @@
 
 {% block auth %}
 <div class="login-page">
-    <div class="login-box">
-    <div class="login-logo">
-        <a href="../../index2.html">DIT Admission</a>
+    {% for message in messages %}
+        <div class="alert alert-success alert-dismissible">
+            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+            <h5><i class="icon fas fa-check"></i> Alert!</h5>
+                {{ message }}
+        </div>
+    {% endfor %}
+    <div class="card card-outline card-primary">
+    <div class="card-header text-center">
+        <a href="#" class="h1">DIT Admission</a>
     </div>
-    <!-- /.login-logo -->
-    <div class="card">
-        <div class="card-body login-card-body">
-        <p class="login-box-msg">Sign in to start your admission</p>
-    
+    <div class="card-body">
+        <p class="login-box-msg">Sign in to start your session</p>
+
         <form action="" method="post">
-            {% csrf_token %}
-            <div class="input-group mb-3">
+        {% csrf_token %}
+
+        <div class="input-group mb-3">
             <input type="email" class="form-control" placeholder="Email" id="email" name="email">
             <div class="input-group-append">
                 <div class="input-group-text">
                 <span class="fas fa-envelope"></span>
                 </div>
             </div>
-            </div>
-            <div class="input-group mb-3">
+        </div>
+        <div class="input-group mb-3">
             <input type="password" class="form-control" placeholder="Password" id="password" name="password">
             <div class="input-group-append">
                 <div class="input-group-text">
                 <span class="fas fa-lock"></span>
                 </div>
             </div>
-            </div>
-            <div class="row">
+        </div>
+        <div class="row">
             <div class="col-8">
-                <div class="icheck-primary">
+            <div class="icheck-primary">
                 <input type="checkbox" id="remember">
                 <label for="remember">
-                    Remember Me
+                Remember Me
                 </label>
-                </div>
+            </div>
             </div>
             <!-- /.col -->
             <div class="col-4">
-                <button type="submit" class="btn btn-primary btn-block">Sign In</button>
+            <button type="submit" class="btn btn-primary btn-block">Sign In</button>
             </div>
             <!-- /.col -->
-            </div>
+        </div>
         </form>
+
         <!-- /.social-auth-links -->
-    
+
         <p class="mb-1">
-            <a href="forgot-password.html">I forgot my password</a>
+        <a href="#">I forgot my password</a>
         </p>
         <p class="mb-0">
-            <a href="{% url 'register' %}" class="text-center">Register a new membership</a>
+        <a href="{% url 'register' %}" class="text-center">Register a new membership</a>
         </p>
-        </div>
-        <!-- /.login-card-body -->
     </div>
+    <!-- /.card-body -->
     </div>
 </div>
-
 
 
 {% endblock auth %}
