@@ -9,6 +9,10 @@ from django.contrib.auth.decorators import login_required
 from .forms import CreateStudentForm
 from .models import *
 from .decorators import admin_only, allowed_users, unauthenticated_user
+
+def home(request):
+    context = {}
+    return render(request, 'dashboard.html', context)
     
 
 @unauthenticated_user
@@ -22,7 +26,7 @@ def registerPage(request):
     if request.method == 'POST':    
             first_name = request.POST['first_name']
             last_name = request.POST['last_name']
-            username = request.POST['first_name'] + request.POST['last_name']
+            username = request.POST['first_name'] + f" " + request.POST['last_name']
             csee = request.POST['csee']
             email = request.POST['email']
             password1 = request.POST['password1']

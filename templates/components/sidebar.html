@@ -16,7 +16,7 @@
         </div>
         {% if request.user.is_authenticated %}
           <div class="info">
-            <a href="#" class="d-block">{{ request.user|capfirst }}</a>
+            <a href="#" class="d-block">{{ user.first_name }} {{user.last_name}} </a>
           </div>
         {% endif %}
       </div>
@@ -39,7 +39,22 @@
               <i class="nav-icon fas fa-th"></i>
               <p>
                 Recommendations
-                <span class="right badge badge-danger">New</span>
+              </p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="{% url 'recommendations' %}" class="nav-link">
+              <i class="nav-icon fas fa-th"></i>
+              <p>
+                My Application
+              </p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="{% url 'recommendations' %}" class="nav-link">
+              <i class="nav-icon fas fa-th"></i>
+              <p>
+                Application Status
               </p>
             </a>
           </li>

@@ -48,4 +48,8 @@ class Course(models.Model):
     department = models.ForeignKey(Department, on_delete=models.CASCADE, null=False, blank=False)
     capacity = models.IntegerField()
     duration = models.IntegerField()
+
+    def __str__(self):
+        return self.name
+    
     
