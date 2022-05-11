@@ -1,3 +1,6 @@
+from ctypes import c_ssize_t
+from logging import lastResort
+import re
 from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login, logout
 
@@ -21,7 +24,7 @@ def registerPage(request):
     # if request.user.is_authenticated:
     #     return redirect('home')
     # else:
-    form = CreateStudentForm()
+    # form = CreateStudentForm()
 
     if request.method == 'POST':    
             first_name = request.POST['first_name']
@@ -32,41 +35,51 @@ def registerPage(request):
             password1 = request.POST['password1']
             password2 = request.POST['password2']
 
-            if password1 == password2:
-                if User.objects.filter(first_name=first_name, last_name= last_name).exists():
+            # necta_student_csee = NectaBasicInfoAPI.objects.filter(csee=csee)
+            # print(necta_student_csee)
+
+            # if necta_student_csee == csee:
+            #     messages.error(request, 'CSEE number does not match')
+            if NectaBasicInfoAPI.objects.filter(csee=csee).exists():
+                if password1 == password2:
+                    if User.objects.filter(first_name=first_name, last_name= last_name).exists():
+                        messages.error(request, 'User already exist')
+                        return redirect('register')
+                    elif User.objects.filter(email=email).exists():
+                        messages.error(request, 'Password does not match')
+                    else:
+                        user = User.objects.create_user(
+                            username = username,
+                            first_name= first_name, 
+                            last_name=last_name,
+                            email=email,
+                            password=password1
+                        )
+                        user.save()
+
+                        group = Group.objects.get(name='student')
+                        user.groups.add(group)
+
+                        Student.objects.create(
+                            user = user,
+                            first_name = first_name,
+                            last_name = last_name,
+                            email = email,
+
+                            csee = csee,
+                        )
+                        print('user creates successfully')
+
+
+                    messages.success(request, 'Account was created for ' + first_name)
+                    return redirect('login')
+
+                else: 
                     messages.error(request, 'Password does not match')
-                elif User.objects.filter(email=email).exists():
-                    messages.error(request, 'Password does not match')
-                else:
-                    user = User.objects.create_user(
-                        username = username,
-                        first_name= first_name, 
-                        last_name=last_name,
-                        email=email,
-                        password=password1
-                    )
-                    user.save()
-
-                    group = Group.objects.get(name='student')
-                    user.groups.add(group)
-
-                    Student.objects.create(
-                        user = user,
-                        first_name = first_name,    
-                        email = email,
-
-                        csee = csee,
-                    )
-                    print('user creates successfully')
-
-
-                messages.success(request, 'Account was created for ' + first_name)
-                return redirect('login')
-
-            else: 
-                messages.error(request, 'Password does not match')
-                return redirect('login')
-
+                    return redirect('register')
+            else:
+                messages.error(request, 'CSEE number does not match')
+                return redirect('register')
     context = {}
     return render(request, 'core/auth/register.html', context)
 

@@ -23,8 +23,12 @@ class NectaBasicInfoAPI(models.Model):
     first_name = models.CharField(max_length=200, null=False, blank=False)
     last_name = models.CharField(max_length=200, null=False, blank=False)
     csee = models.CharField(max_length=200, null=False, blank=False)
-    acsee = models.CharField(max_length=200, null=False, blank=False)
+    acsee = models.CharField(max_length=200, null=True, blank=True)
     gender = models.CharField(max_length=200, null=False, blank=False)
+
+    def __str__(self):
+        return self.first_name +f" "+ self.last_name
+    
 
 
 class NectaCSEEReusltsAPI(models.Model):

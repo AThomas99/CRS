@@ -2,6 +2,12 @@
 
 {% block auth %}
 <div class="register-page">
+    {% for message in messages %}
+    <div class="alert alert-success alert-dismissible">
+        {{ message }}
+        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+    </div>
+  {% endfor %}
   <div class="register-box">
     <div class="card card-outline card-primary">
       <div class="card-header text-center">
