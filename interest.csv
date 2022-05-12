@@ -1,0 +1,19 @@
+interestId,title,course
+1,Building,Ordinary Diploma in Civil Engineering|Ordinary Diploma in Electrical Engineering|Ordinary Diploma in Computer Engineering
+2,Research,Ordinary Diploma in Civil Engineering|Ordinary Diploma in Biotechnology|Ordinary Diploma Renewable Energy Technology|Ordinary Diploma in Electrical Engineering
+3,Health,Ordinary Diploma in Biotechnology|Ordinary Diploma in Food Science and Technology|Ordinary diploma in Biomedical Equipment Engineering
+4,Technology,Ordinary Diploma in Computer Engineering|Ordinary Diploma in Information Technology|Ordinary Diploma Multimedia and Film Technology|Ordinary Diploma in Biotechnology|Ordinary Diploma in Electronics and Telecommunications Engineering|Ordinary Diploma in Food Science and Technology
+5,Computer,Ordinary Diploma in Computer Engineering|Ordinary Diploma in Information Technology|Ordinary Diploma in Electronics and Telecommunications Engineering
+6,Electricity,Ordinary Diploma in Electrical Engineering|Ordinary Diploma in Electronics and Telecommunications Engineering
+7,Networking,Ordinary Diploma in Electronics and Telecommunications Engineering|Ordinary Diploma in Computer Engineering|Ordinary Diploma in Information Technology|
+8,Energy,Ordinary Diploma in Mining Engineering|Ordinary Diploma Renewable Energy Technology
+9,Communication,Ordinary Diploma in Information Technology|Ordinary Diploma in Electronics and Telecommunications Engineering
+10,Automation,Ordinary Diploma in Mechanical Engineering|Ordinary Diploma in Food Science and Technology|Ordinary Diploma in Computer Engineering|Ordinary Diploma in Mechanical Engineering
+11,Geology,Ordinary Diploma in Mining Engineering
+12,Film,Ordinary Diploma Multimedia and Film Technology
+13,Medicine,Ordinary Diploma in Biotechnology|Ordinary Diploma in Food Science and Technology
+14,Programming,Ordinary Diploma in Computer Engineering|Ordinary Diploma in Information Technology
+15,Media,Ordinary Diploma Multimedia and Film Technology|Ordinary Diploma in Information Technology
+16,Experiments,Ordinary Diploma in Food Science and Technology|Ordinary Diploma in Electronics and Telecommunications Engineering|Ordinary Diploma in Mining Engineering|Ordinary diploma in Biomedical Equipment Engineering
+17,Maintenance,Ordinary Diploma in Computer Engineering|Ordinary Diploma in Electrical Engineering|Ordinary Diploma in Mechanical Engineering|Ordinary diploma in Biomedical Equipment Engineering
+18,Laboratory,Ordinary Diploma in Biotechnology|Ordinary Diploma in Science and Laboratory Technology|Ordinary Diploma in Food Science and Technology|Ordinary diploma in Biomedical Equipment Engineering

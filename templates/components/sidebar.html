@@ -26,9 +26,9 @@
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
           <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
-          <li class="nav-item menu-open">
+          <li class="nav-item">
             <a href="{% url 'studentPage' %}" class="nav-link">
-              <i class="nav-icon fas fa-tachometer-alt"></i>
+              <i class="nav-icon fas fa-bell"></i>
               <p>
                 Academic Programs
               </p>
@@ -43,7 +43,7 @@
             </a>
           </li>
           <li class="nav-item">
-            <a href="{% url 'recommendations' %}" class="nav-link">
+            <a href="{% url 'application_status' %}" class="nav-link">
               <i class="nav-icon fas fa-th"></i>
               <p>
                 My Application
@@ -55,6 +55,14 @@
               <i class="nav-icon fas fa-th"></i>
               <p>
                 Application Status
+              </p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="{% url 'recommendations' %}" class="nav-link">
+              <i class="nav-icon fas fa-user"></i>
+              <p>
+                My Profile
               </p>
             </a>
           </li>

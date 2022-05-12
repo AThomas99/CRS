@@ -129,8 +129,8 @@ def dashboard(request):
 @login_required(login_url='login')
 @allowed_users(allowed_roles=['student'])
 def studentPage(request):
+    department = Department.objects.all()
     # orders = request.user.customer.order_set.all()
-
     # # These are statistical numbers for status.html
     # total_orders = orders.count()
     # delivered = orders.filter(status='Delivered').count()
@@ -140,7 +140,7 @@ def studentPage(request):
         # 'orders': orders,
         # 'total_orders': total_orders,
         # 'delivered': delivered,
-        # 'pending': pending,
+        'department': department,
     }
     return render(request, 'core/starter.html', context)
 
@@ -148,3 +148,6 @@ def studentPage(request):
 
 def recommendations(request):
     return render(request, 'core/recommendations.html')
+
+def application_status(request):
+    return render(request, 'core/application_status.html')
