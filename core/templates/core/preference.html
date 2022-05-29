@@ -45,7 +45,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
             <div class="col-md-10">
                 <div class="card card-outline card-primary">
                     <div class="card-header">
-                        <h3 class="card-title"></h3>
+                        <h3 class="card-title">Courses and Choices Selection</h3>
                       </div>
                     <!-- /.card-header -->
                     <!-- form start -->
@@ -54,24 +54,29 @@ scratch. This page gets rid of all links and provides the needed markup only.
                         <form>
                           <div class="card-body">
                             <div class="form-group">
-                              <label for="exampleInputEmail1">Email address</label>
-                              <input type="email" class="form-control" id="email_address" placeholder="Enter email">
+                              <label>Course choice 1</label>
+                              <select class="form-control select2" style="width: 100%;">
+                                {% for course in courses %}
+                                <option>{{ course.name }}</option>
+                                {% endfor %}
+                              </select>
                             </div>
                             <div class="form-group">
-                              <label for="exampleInputPassword1">Phone Number</label>
-                              <input type="password" class="form-control" id="phone_number" placeholder="Valid phone number">
+                              <label>Course choice 2</label>
+                              <select class="form-control select2" style="width: 100%;">
+                                {% for course in courses %}
+                                <option value="{{ course.id }}">{{ course.name }}</option>
+                                {% endfor %}
+                              </select>
                             </div>
                             <div class="form-group">
-                              <label for="exampleInputPassword1">Date of Birth</label>
-                              <input type="date" class="form-control" id="date_of_birth" placeholder="Date of Birth">
+                              <label>Course choice 3</label>
+                              <select class="form-control select2" style="width: 100%;">
+                                {% for course in courses %}
+                                <option>{{ course.name }}</option>
+                                {% endfor %}
+                              </select>
                             </div>
-                            <div class="form-group">
-                              <label for="exampleInputPassword1">Maritial status</label>
-                              <input type="password" class="form-control" id="maritial_status" placeholder="Valid phone number">
-                            </div>
-                          </div>
-                          <!-- /.card-body -->
-                          <div class="card-footer">
                             <button type="submit" class="btn btn-primary">Submit</button>
                           </div>
                         </form>
@@ -80,21 +85,30 @@ scratch. This page gets rid of all links and provides the needed markup only.
                         <form>
                           <div class="card-body">
                             <div class="form-group">
-                              <label for="exampleInputEmail1">NIDA Number</label>
-                              <input type="email" class="form-control" id="nida_number" placeholder="NIDA number">
+                              <label>Course choice 4</label>
+                              <select class="form-control select2" style="width: 100%;">
+                                {% for course in courses %}
+                                <option>{{ course.name }}</option>
+                                {% endfor %}
+                              </select>
                             </div>
                             <div class="form-group">
-                              <label for="exampleInputPassword1">NHIF Number</label>
-                              <input type="password" class="form-control" id="nhif_number" placeholder="NHIF Number">
+                              <label>Course choice 5</label>
+                              <select class="form-control select2" style="width: 100%;">
+                                {% for course in courses %}
+                                <option>{{ course.name }}</option>
+                                {% endfor %}
+                              </select>
                             </div>
                             <div class="form-group">
-                              <label for="exampleInputPassword1">Number of Dependant</label>
-                              <input type="password" class="form-control" id="number_of_dependant" placeholder="Number of Dependant">
+                              <label>Course choice 6</label>
+                              <select class="form-control select2" style="width: 100%;">
+                                {% for course in courses %}
+                                <option>{{ course.name }}</option>
+                                {% endfor %}
+                              </select>
                             </div>
-                            <div class="form-group">
-                              <label for="exampleInputPassword1">Physical Challenges (If any...)</label>
-                              <textarea type="text" class="form-control" id="physical_challenge" placeholder="Physical Challenges (If any...)"></textarea>
-                            </div>
+                            
                           </div>
                           <!-- /.card-body -->
                         </form>

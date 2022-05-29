@@ -47,23 +47,27 @@ class Course(models.Model):
     def __str__(self):
         return self.name
 
-# class Application(models.Model):
-#     STATUS = (
-#         ('Approved', 'Approved'),
-#         ('Pending', 'Pending'),
-#         ('Rejected', 'Rejected'),
-#     )
+class Application(models.Model):
+    STATUS = (
+        ('Approved', 'Approved'),
+        ('Pending', 'Pending'),
+        ('Rejected', 'Rejected'),
+    )
 
-#     student = models.OneToOneField(Student, on_delete=models.SET_NULL, null=True, related_name='student_course')
-#     status = models.CharField(choices=STATUS, null=True, blank=True)
-#     is_open = models.BooleanField(default=True)
+    student = models.OneToOneField(Student, on_delete=models.SET_NULL, null=True, related_name='student_course')
+    status = models.CharField(max_length=200, choices=STATUS, null=True, blank=True, default='Pending')
+    is_open = models.BooleanField(default=True)
 
-#     choice1 = models.OneToOneField(Course, on_delete=models.SET_NULL, null=True, related_name='course_choice1')
-#     choice2 = models.OneToOneField(Course, on_delete=models.SET_NULL, null=True, related_name='course_choice2')
-#     choice3 = models.OneToOneField(Course, on_delete=models.SET_NULL, null=True, related_name='course_choice3')
-#     choice4 = models.OneToOneField(Course, on_delete=models.SET_NULL, null=True, related_name='course_choice4')
-#     choice5 = models.OneToOneField(Course, on_delete=models.SET_NULL, null=True, related_name='course_choice5')
-#     choice6 = models.OneToOneField(Course, on_delete=models.SET_NULL, null=True, related_name='course_choice6')
+    choice1 = models.OneToOneField(Course, on_delete=models.SET_NULL, null=True, related_name='course_choice1')
+    choice2 = models.OneToOneField(Course, on_delete=models.SET_NULL, null=True, related_name='course_choice2')
+    choice3 = models.OneToOneField(Course, on_delete=models.SET_NULL, null=True, related_name='course_choice3')
+    choice4 = models.OneToOneField(Course, on_delete=models.SET_NULL, null=True, related_name='course_choice4')
+    choice5 = models.OneToOneField(Course, on_delete=models.SET_NULL, null=True, related_name='course_choice5')
+    choice6 = models.OneToOneField(Course, on_delete=models.SET_NULL, null=True, related_name='course_choice6')
+
+    def __str__(self):
+        return self.student.first_name + f" " + self.student.last_name 
+
 
     
 

@@ -1,5 +1,7 @@
+from multiprocessing import context
 from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login, logout
+from django.forms import inlineformset_factory
 
 from django.contrib import messages
 from django.contrib.auth.models import Group
@@ -130,9 +132,6 @@ def studentPage(request):
 
     context = {
         'courses': courses
-        # 'orders': orders,
-        # 'total_orders': total_orders,
-        # 'delivered': delivered,
     }
     return render(request, 'core/starter.html', context)
 
@@ -142,7 +141,11 @@ def personalInfo(request):
     return render(request, 'core/personal_info.html')
 
 def preferencePage(request):
-    return render(request, 'core/preference.html')
+    courses = Course.objects.all()
+    context = {
+        'courses': courses
+    }
+    return render(request, 'core/preference.html', context)
 
 def recommendations(request):
     return render(request, 'core/recommendations.html')
