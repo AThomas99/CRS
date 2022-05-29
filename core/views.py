@@ -1,6 +1,3 @@
-from ctypes import c_ssize_t
-from logging import lastResort
-import re
 from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login, logout
 
@@ -9,22 +6,22 @@ from django.contrib.auth.models import Group
 from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
 
-from .forms import CreateStudentForm
 from .models import *
 from .decorators import admin_only, allowed_users, unauthenticated_user
 
-def home(request):
-    context = {}
-    return render(request, 'dashboard.html', context)
-    
+@login_required(login_url='login')
+def adminPage(request):
+    students = Student.objects.all()
+    courses = Course.objects.all()
+
+    context = {
+        'students': students,
+        'courses': courses
+    }
+    return render(request, 'core/dashboard.html', context)
 
 @unauthenticated_user
 def registerPage(request):
-    # If user is logged in he/she should never access the register page through URL
-    # if request.user.is_authenticated:
-    #     return redirect('home')
-    # else:
-    # form = CreateStudentForm()
 
     if request.method == 'POST':    
             first_name = request.POST['first_name']
@@ -40,7 +37,7 @@ def registerPage(request):
 
             # if necta_student_csee == csee:
             #     messages.error(request, 'CSEE number does not match')
-            if NectaBasicInfoAPI.objects.filter(csee=csee).exists():
+            if NectaAPI.objects.filter(csee=csee).exists():
                 if password1 == password2:
                     if User.objects.filter(first_name=first_name, last_name= last_name).exists():
                         messages.error(request, 'User already exist')
@@ -129,22 +126,23 @@ def dashboard(request):
 @login_required(login_url='login')
 @allowed_users(allowed_roles=['student'])
 def studentPage(request):
-    department = Department.objects.all()
-    # orders = request.user.customer.order_set.all()
-    # # These are statistical numbers for status.html
-    # total_orders = orders.count()
-    # delivered = orders.filter(status='Delivered').count()
-    # pending = orders.filter(status='Pending').count()
+    courses = Course.objects.all()
 
     context = {
+        'courses': courses
         # 'orders': orders,
         # 'total_orders': total_orders,
         # 'delivered': delivered,
-        'department': department,
     }
     return render(request, 'core/starter.html', context)
 
 
+
+def personalInfo(request):
+    return render(request, 'core/personal_info.html')
+
+def preferencePage(request):
+    return render(request, 'core/preference.html')
 
 def recommendations(request):
     return render(request, 'core/recommendations.html')

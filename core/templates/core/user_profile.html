@@ -1,0 +1,72 @@
+{% load static %}
+<!DOCTYPE html>
+<!--
+This is a starter template page. Use this page to start your new project from
+scratch. This page gets rid of all links and provides the needed markup only.
+-->
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>User Profile</title>
+
+  {% include 'components/css.html' %}
+</head>
+<body class="hold-transition sidebar-mini">
+<div class="wrapper">
+
+  {% include 'components/navbar.html' %}
+
+
+  {% include 'components/sidebar.html' %}
+  
+
+{% block content %}
+<div class="content-wrapper">
+  <div class="content-header">
+    <div class="row">
+        <!-- left column -->
+        <div class="col-md-4">
+
+        </div>
+        <!-- right column -->
+        <div class="col-md-8">
+          <div class="card card-outline card-primary">
+            <div class="card-header">
+              <h3 class="card-title">
+                <i class="icon fas fa-info"></i> 
+                Personal Information(Mandatory fields ***)
+              </h3>
+            </div>
+            <!-- /.card-header -->
+            <!-- form start -->
+            <form>
+              <div class="card-body">
+                <div class="form-group">
+                  <label for="exampleInputEmail1">Email address</label>
+                  <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter email">
+                </div>
+                <div class="form-group">
+                  <label for="exampleInputPassword1">Password</label>
+                  <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+                </div>
+              </div>
+              <!-- /.card-body -->
+              <div class="card-footer">
+                <button type="submit" class="btn btn-primary">Submit</button>
+              </div>
+            </form>
+          </div>
+        </div>
+    </div>
+  </div>
+
+</div>
+{% endblock content %}
+
+</div>
+<!-- ./wrapper -->
+
+{% include 'components/js.html' %}
+</body>
+</html>

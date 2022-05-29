@@ -7,6 +7,7 @@ class Student(models.Model):
     last_name = models.CharField(max_length=200, null=False, blank=False)
     csee = models.CharField(max_length=200, null=False, blank=False)
     acsee = models.CharField(max_length=200, null=True)
+    phone_number = models.CharField(max_length=200, null=False, blank=False)
     email = models.EmailField(max_length=200, unique=True, null=False, blank=False)
     profile_pic = models.ImageField(default="user-1.png", null=True, blank=True)
     date_created = models.DateTimeField(auto_now_add=True, null=True )
@@ -18,7 +19,7 @@ class Student(models.Model):
         return self.first_name
 
 
-class NectaBasicInfoAPI(models.Model):
+class NectaAPI(models.Model):
     # General Information
     first_name = models.CharField(max_length=200, null=False, blank=False)
     last_name = models.CharField(max_length=200, null=False, blank=False)
@@ -26,34 +27,48 @@ class NectaBasicInfoAPI(models.Model):
     acsee = models.CharField(max_length=200, null=True, blank=True)
     gender = models.CharField(max_length=200, null=False, blank=False)
 
+    physics = models.CharField(max_length=10, null=True, blank=True)
+    chemisty = models.CharField(max_length=10, null=True, blank=True)
+    biology = models.CharField(max_length=10, null=True, blank=True)
+    maths = models.CharField(max_length=10, null=True, blank=False)
+    english = models.CharField(max_length=10, null=True, blank=True)
+
     def __str__(self):
         return self.first_name +f" "+ self.last_name
-    
-
-
-class NectaCSEEReusltsAPI(models.Model):
-    # Results
-    physics = models.CharField(max_length=10, null=False, blank=False)
-    chemisty = models.CharField(max_length=10, null=False, blank=False)
-    biology = models.CharField(max_length=10, null=False, blank=False)
-    maths = models.CharField(max_length=10, null=False, blank=False)
-    english = models.CharField(max_length=10, null=False, blank=False)
-
-
-class Department(models.Model):
-    name = models.CharField(max_length=200, null=False, blank=False)
-
-    def __str__(self):
-        return self.name
 
 
 class Course(models.Model):
     name = models.CharField(max_length=200, null=False, blank=False)
-    department = models.ForeignKey(Department, on_delete=models.CASCADE, null=False, blank=False)
+    department = models.CharField(max_length=200,null=False, blank=False)
     capacity = models.IntegerField()
     duration = models.IntegerField()
+    requirements = models.TextField(null=True, blank=True)
 
     def __str__(self):
         return self.name
+
+# class Application(models.Model):
+#     STATUS = (
+#         ('Approved', 'Approved'),
+#         ('Pending', 'Pending'),
+#         ('Rejected', 'Rejected'),
+#     )
+
+#     student = models.OneToOneField(Student, on_delete=models.SET_NULL, null=True, related_name='student_course')
+#     status = models.CharField(choices=STATUS, null=True, blank=True)
+#     is_open = models.BooleanField(default=True)
+
+#     choice1 = models.OneToOneField(Course, on_delete=models.SET_NULL, null=True, related_name='course_choice1')
+#     choice2 = models.OneToOneField(Course, on_delete=models.SET_NULL, null=True, related_name='course_choice2')
+#     choice3 = models.OneToOneField(Course, on_delete=models.SET_NULL, null=True, related_name='course_choice3')
+#     choice4 = models.OneToOneField(Course, on_delete=models.SET_NULL, null=True, related_name='course_choice4')
+#     choice5 = models.OneToOneField(Course, on_delete=models.SET_NULL, null=True, related_name='course_choice5')
+#     choice6 = models.OneToOneField(Course, on_delete=models.SET_NULL, null=True, related_name='course_choice6')
+
     
-    
+
+# class Rating(models.Model):
+#     user = models.ForeignKey(Student,on_delete=models.CASCADE,default=None)
+#     course = models.ForeignKey(Course,on_delete=models.CASCADE,default=None)
+#     rating = models.CharField(max_length=70)
+#     rated_date = models.DateTimeField(auto_now_add=True)

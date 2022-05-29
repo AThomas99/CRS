@@ -1,0 +1,118 @@
+{% load static %}
+<!DOCTYPE html>
+<!--
+This is a starter template page. Use this page to start your new project from
+scratch. This page gets rid of all links and provides the needed markup only.
+-->
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Admission system</title>
+
+  {% include 'components/css.html' %}
+</head>
+<body class="hold-transition sidebar-mini">
+<div class="wrapper">
+
+  <!-- Navbar -->
+  {% include 'components/navbar.html' %}
+  <!-- /.navbar -->
+
+  <!-- Main Sidebar Container -->
+
+  {% include 'components/sidebar.html' %}
+
+  <!-- Main content -->
+  {% block content %}
+  <!-- Content Wrapper. Contains page content -->
+  <div class="content-wrapper">
+      <div class="content-header p-4">
+        <div class="container-fluid">
+            <div class="row mb-2">
+                <div class="col-sm-6">
+                <h2 class="m-0">Course preference selection</h2>
+                </div>
+            </div>
+            <div class="callout callout-info">
+                <h5><i class="icon fas fa-info"></i> Courses and Choices Selection</h5>
+    
+                <p> <strong>Select your preferred courses by priority. You will be required to select 6 courses from available list in each priority choice.</strong></p> <hr>
+                <p><strong>You should be ready to be selected in one of the 6 choices of your preference, since no change of programme will be entertained once the admission has been offered.</strong></p>
+            </div>
+        </div>
+        <div class="row justify-content-center mt-4">
+            <div class="col-md-10">
+                <div class="card card-outline card-primary">
+                    <div class="card-header">
+                        <h3 class="card-title"></h3>
+                      </div>
+                    <!-- /.card-header -->
+                    <!-- form start -->
+                    <div class="row">
+                      <div class="col-md-6">
+                        <form>
+                          <div class="card-body">
+                            <div class="form-group">
+                              <label for="exampleInputEmail1">Email address</label>
+                              <input type="email" class="form-control" id="email_address" placeholder="Enter email">
+                            </div>
+                            <div class="form-group">
+                              <label for="exampleInputPassword1">Phone Number</label>
+                              <input type="password" class="form-control" id="phone_number" placeholder="Valid phone number">
+                            </div>
+                            <div class="form-group">
+                              <label for="exampleInputPassword1">Date of Birth</label>
+                              <input type="date" class="form-control" id="date_of_birth" placeholder="Date of Birth">
+                            </div>
+                            <div class="form-group">
+                              <label for="exampleInputPassword1">Maritial status</label>
+                              <input type="password" class="form-control" id="maritial_status" placeholder="Valid phone number">
+                            </div>
+                          </div>
+                          <!-- /.card-body -->
+                          <div class="card-footer">
+                            <button type="submit" class="btn btn-primary">Submit</button>
+                          </div>
+                        </form>
+                      </div>
+                      <div class="col-md-6">
+                        <form>
+                          <div class="card-body">
+                            <div class="form-group">
+                              <label for="exampleInputEmail1">NIDA Number</label>
+                              <input type="email" class="form-control" id="nida_number" placeholder="NIDA number">
+                            </div>
+                            <div class="form-group">
+                              <label for="exampleInputPassword1">NHIF Number</label>
+                              <input type="password" class="form-control" id="nhif_number" placeholder="NHIF Number">
+                            </div>
+                            <div class="form-group">
+                              <label for="exampleInputPassword1">Number of Dependant</label>
+                              <input type="password" class="form-control" id="number_of_dependant" placeholder="Number of Dependant">
+                            </div>
+                            <div class="form-group">
+                              <label for="exampleInputPassword1">Physical Challenges (If any...)</label>
+                              <textarea type="text" class="form-control" id="physical_challenge" placeholder="Physical Challenges (If any...)"></textarea>
+                            </div>
+                          </div>
+                          <!-- /.card-body -->
+                        </form>
+                      </div>
+                    </div>
+                  </div>
+            </div>
+        </div>
+      </div>
+
+</div>
+{% endblock content %}
+    <!-- /.content -->
+  <!-- /.content-wrapper -->
+
+</div>
+<!-- ./wrapper -->
+
+{% include 'components/js.html' %}
+</body>
+</html>

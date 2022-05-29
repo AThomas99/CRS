@@ -1,1 +1,10 @@
-{% extends '' %}
+{% extends 'base.html' %}
+
+
+{% block auth %}
+{% include 'components/admin-sidebar.html' %}
+{% include 'components/navbar.html' %}
+
+<h1>Admin Panel</h1>
+<a href="{% url  'logout'%}">Logout</a>
+{% endblock auth %}

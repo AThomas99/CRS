@@ -1,4 +1,4 @@
-userId,movieId,rating,timestamp
+userId,interestId,rating,timestamp
 1,1,4,964982703
 2,2,4,964981247
 3,3,4,964982224

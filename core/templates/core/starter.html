@@ -22,33 +22,60 @@ scratch. This page gets rid of all links and provides the needed markup only.
   <!-- Main Sidebar Container -->
 
   {% include 'components/sidebar.html' %}
-  
+
+  <!-- Main content -->
+  {% block content %}
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
-    <!-- Content Header (Page header) -->
-    <div class="content-header">
-      <div class="container-fluid">
-        <div class="row mb-2">
-          <div class="col-sm-6">
-            <h2 class="m-0">Welcome, {{ user.first_name }} {{ user.last_name }}</h2>
-            <hr/>
-            <h5>You have successfully logged into DIT admission system</h5>
-          </div><!-- /.col -->
-        </div>
-        <hr><!-- /.row -->
-        <div class="col-md-6">
-          <h2 class="m-0">Academic Programs</h2>
-        </div>
-      </div><!-- /.container-fluid -->
+      <div class="content-header">
+        <!-- container-fluid -->
+          <div class="container-fluid">
+            <div class="row mb-2">
+              <div class="col-sm-6">
+                <h2 class="m-0">Welcome, {{ user.first_name }} {{ user.last_name }}</h2>
+              </div><!-- /.col -->
+            </div>
+            <hr><!-- /.row -->
+            <div class="col-md-6">
+              <h2 class="m-0">Academic Programs Requirements:</h2>
+            </div>
+          </div>
+
+          <div class="p-4">
+            <div class="callout callout-info">
+              <h5><i class="icon fas fa-info"></i> Minimum Entry Qualifications for Ordinary Diploma (NTA LEVEL4-6) Programmes</h5>
+  
+              <p>In order to qualify for admission into <strong>Ordinary Diploma (NTA LEVEL4-6) Programmes</strong> a candidate must be a holder of a <strong>Certificate of Secondary Education (CSEE)</strong> with at least four (4) passes (i.e. D grade or higher) in <strong>Physics/Engineering Science, Mathematics and Chemistry.</strong></p>
+              <hr>
+              <p>For admission into the Ordinary Diploma (NTA LEVEL 4-6) in <strong> Science and Laboratory Technology, Biomedical Equipment Engineering, Food Science and Technology and Biotechnology</strong>  applicants must be a holder of a Certificate of Secondary Education (CSEE) with D grade or higher in <strong>Physics/Engineering Science, Mathematics, Chemistry and Biology.</strong></p>
+            </div>
+          </div>
+
+        <!-- /.container-fluid -->
+        <!-- course card -->
+        <!-- <div class="row p-4">
+          {% for course in courses %}
+            <div class="col-md-4">
+              <div class="card card-success">
+                <div class="card-header">
+                  <div class="card-title">{{ course.name }}</div>
+                </div>
+                <div class="card-body">
+                  {{ course.requirements }}
+                </div>
+                <div class="card-footer">
+                  Duration: {{ course.duration }} years
+                </div>
+              </div>
+            </div>
+
+          {% endfor %}
+        </div> -->
+      </div>
+
     </div>
-    <!-- /.content-header -->
-
-    <!-- Main content -->
-    {% block content %}
-
     {% endblock content %}
     <!-- /.content -->
-  </div>
   <!-- /.content-wrapper -->
 
 </div>
