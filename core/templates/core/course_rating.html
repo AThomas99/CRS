@@ -1,0 +1,95 @@
+{% load static %}
+<!DOCTYPE html>
+<!--
+This is a starter template page. Use this page to start your new project from
+scratch. This page gets rid of all links and provides the needed markup only.
+-->
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Course Rating</title>
+
+  {% include 'components/css.html' %}
+</head>
+<body class="hold-transition sidebar-mini">
+<div class="wrapper">
+
+  <!-- Navbar -->
+  {% include 'components/navbar.html' %}
+  <!-- /.navbar -->
+
+  <!-- Main Sidebar Container -->
+
+  {% include 'components/sidebar.html' %}
+
+  <!-- Main content -->
+  {% block content %}
+  <!-- Content Wrapper. Contains page content -->
+<div class="content-wrapper">
+    <div class="content-header p-4">
+        <div class="container-fluid">
+            <div class="row mb-2">
+                <div class="col-sm-6">
+                    <h2 class="m-0">Collaborative Course Rating </h2>
+                </div>
+                <div class="p-4">
+                    <div class="callout callout-info">
+                      <h5><i class="icon fas fa-info"></i> How to rate interest</h5>
+                      <p>Use the slider to rate courses with respect interest, The slider starts at the lower level (0) to the higher level (5). which is mostly likely prefered interest.</strong></p>
+                    </div>
+                  </div>
+            </div>
+            <div class="container wrapper">
+            {% if messages %}
+                {%for msg in messages%}
+                    {% if msg %}   
+                        <div class="alert alert-{{msg.tags}} alert-dismissible fade show font-weight-bold text-primary w-50 ml-3 mt-5">
+                            {{msg}} 
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                    {% endif %}
+                {%endfor%}
+            {% endif %}
+            
+                <!--Slideshow starts here -->
+            {% for course, range, nSlides in allCourses %}
+                <h5 class="my-4 text-dark">{{course.0.interest}}</h5>
+                <div class="row">
+                    
+                    <div class="col-md-6">
+                        <div class="card"> 
+                            <h5 class="card-title p-4">{{course.0.name}}</h5>
+                            <div class="card-body p-4">
+                                <form action="" method="post" class="range-field">
+                                    {% csrf_token %}  
+                                    <input type="hidden" name="courseid" value="{{course.0.id}}"/>
+                                    <input type="hidden" name="userid" value="{{user.id}}"/> 
+                                    {{rform.as_p}}
+                                    <div class="showrating"></div>
+                                    <input type="submit" class="btn btn-primary" value="Submit">
+                                </form>
+                            </div>       
+                            <div class="card-footer">
+                                <small class="text-muted">{{course.0.interest}}</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock content %}
+    <!-- /.content -->
+  <!-- /.content-wrapper -->
+
+</div>
+<!-- ./wrapper -->
+
+{% include 'components/js.html' %}
+</body>
+</html>

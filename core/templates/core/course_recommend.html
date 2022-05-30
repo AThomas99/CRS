@@ -1,0 +1,68 @@
+{% load static %}
+<!DOCTYPE html>
+<!--
+This is a starter template page. Use this page to start your new project from
+scratch. This page gets rid of all links and provides the needed markup only.
+-->
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Course Recommendation</title>
+
+  {% include 'components/css.html' %}
+</head>
+<body class="hold-transition sidebar-mini">
+<div class="wrapper">
+
+  <!-- Navbar -->
+  {% include 'components/navbar.html' %}
+  <!-- /.navbar -->
+
+  <!-- Main Sidebar Container -->
+
+  {% include 'components/sidebar.html' %}
+
+  <!-- Main content -->
+  {% block content %}
+  <!-- Content Wrapper. Contains page content -->
+  <div class="content-wrapper">
+      <div class="content-header p-4">
+        <div class="container-fluid">
+            <div class="row mb-2">
+                <div class="col-md-6">
+                    <h2 class="m-0">Collaborative Course Recommendation</h2>
+                    <hr>
+                    {% if  recommended%}
+                    <h5 class="my-4 text-dark">Recommended Course For You</u></h5>
+                    {% for item in recommended %}
+                    <div class="row">
+                            <div class="col-md-4 mb-2">
+                                <div class="card">       
+                                    <div class="card-footer">
+                                        <h3 class="card-title">{{item.name}}</h3>
+                                        <small class="text-muted">{{item.interest}}</small>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        {% endfor %}
+                    {% else %}
+                        <h5 class="my-4 text-dark">No Recommended Course Found</u></h5>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+      </div>
+
+</div>
+{% endblock content %}
+    <!-- /.content -->
+  <!-- /.content-wrapper -->
+
+</div>
+<!-- ./wrapper -->
+
+{% include 'components/js.html' %}
+</body>
+</html>

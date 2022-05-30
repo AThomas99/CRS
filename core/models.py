@@ -7,7 +7,7 @@ class Student(models.Model):
     last_name = models.CharField(max_length=200, null=False, blank=False)
     csee = models.CharField(max_length=200, null=False, blank=False)
     acsee = models.CharField(max_length=200, null=True)
-    phone_number = models.CharField(max_length=200, null=False, blank=False)
+    phone_number = models.CharField(max_length=200, null=True, blank=True, unique=True)
     email = models.EmailField(max_length=200, unique=True, null=False, blank=False)
     profile_pic = models.ImageField(default="user-1.png", null=True, blank=True)
     date_created = models.DateTimeField(auto_now_add=True, null=True )
@@ -40,12 +40,21 @@ class NectaAPI(models.Model):
 class Course(models.Model):
     name = models.CharField(max_length=200, null=False, blank=False)
     department = models.CharField(max_length=200,null=False, blank=False)
+    interest = models.CharField(max_length=200, null=True, blank=True)
     capacity = models.IntegerField()
     duration = models.IntegerField()
     requirements = models.TextField(null=True, blank=True)
 
     def __str__(self):
         return self.name
+
+    def __str__(self):
+        return str(self.pk)
+
+class Rating(models.Model):
+    user=models.ForeignKey(User, related_name='student_rating',on_delete=models.CASCADE,default=None)
+    course=models.ForeignKey(Course,on_delete=models.CASCADE,default=None)
+    rating=models.CharField(max_length=70)
 
 class Application(models.Model):
     STATUS = (
