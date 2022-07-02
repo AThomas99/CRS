@@ -30,7 +30,7 @@ class NectaAPI(models.Model):
     physics = models.CharField(max_length=10, null=True, blank=True)
     chemisty = models.CharField(max_length=10, null=True, blank=True)
     biology = models.CharField(max_length=10, null=True, blank=True)
-    maths = models.CharField(max_length=10, null=True, blank=False)
+    maths = models.CharField(max_length=10, null=True, blank=True)
     english = models.CharField(max_length=10, null=True, blank=True)
 
     def __str__(self):

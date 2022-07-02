@@ -35,6 +35,12 @@ scratch. This page gets rid of all links and provides the needed markup only.
                     <hr>
                     {% if  recommended%}
                     <h5 class="my-4 text-dark">Recommended Course For You</u></h5>
+                    <div class="p-4">
+                        <div class="callout callout-info">
+                          <h5><i class="icon fas fa-info"></i> Preference Recommendation Order</h5>
+                          <p> <strong>The recommended below is in the order of most likely chances to get admitted.</strong></p>
+                        </div>
+                      </div>
                     {% for item in recommended %}
                     <div class="row">
                             <div class="col-md-4 mb-2">

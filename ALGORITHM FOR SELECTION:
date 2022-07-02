@@ -1,0 +1,6 @@
+ALGORITHM FOR SELECTION:
+1. check if the preference is the 1st one and give priority
+    kama wakikosa ya kwanza wapeleke kwenye preference ya pili
+2. sort kwa ufualu wa pointi nyingi (descending order)
+3. date of application submission (ascending order) 1 - 30
+4. course capacity (check on the number)
