@@ -1,0 +1,83 @@
+{% load static %}
+<!DOCTYPE html>
+<!--
+This is a starter template page. Use this page to start your new project from
+scratch. This page gets rid of all links and provides the needed markup only.
+-->
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Admission system</title>
+
+  {% include 'components/css.html' %}
+</head>
+<body class="hold-transition sidebar-mini">
+<div class="wrapper">
+
+  <!-- Navbar -->
+  {% include 'components/navbar.html' %}
+  <!-- /.navbar -->
+
+  <!-- Main Sidebar Container -->
+
+  {% include 'components/admin_sidebar.html' %}
+
+  <!-- Main content -->
+  {% block content %}
+  <!-- Content Wrapper. Contains page content -->
+  <div class="content-wrapper">
+      <div class="content-header">
+        <!-- container-fluid -->
+        <div class="card-body">
+            <div id="datatable_wrapper" class="dataTables_wrapper dt-bootstrap4 no-footer"><div class="row"><div class="col-sm-12 col-md-6"><div class="dataTables_length" id="datatable_length"><label>Show <select name="datatable_length" aria-controls="datatable" class="custom-select custom-select-sm form-control form-control-sm"><option value="10">10</option><option value="25">25</option><option value="50">50</option><option value="100">100</option></select> entries</label></div></div><div class="col-sm-12 col-md-6"><div id="datatable_filter" class="dataTables_filter"><label>Search:<input type="search" class="form-control form-control-sm" placeholder="" aria-controls="datatable"></label></div></div></div><div class="row"><div class="col-sm-12"><table id="datatable" class="table table-bordered table-striped dataTable no-footer dtr-inline" role="grid" aria-describedby="datatable_info">
+                <thead>
+                <tr role="row">
+                    <th class="sorting sorting_asc" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" aria-sort="ascending" aria-label="No: activate to sort column descending">No</th>
+                    <th class="sorting" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" aria-label=" Applicant: activate to sort column ascending"> Applicant Name</th>
+                    <th class="sorting" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" aria-label=" Bill Amount: activate to sort column ascending"> Status</th>
+                    <th class="sorting" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" aria-label=" Control Number: activate to sort column ascending">Choice 1</th>
+                    <th class="sorting" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" aria-label=" Control Number: activate to sort column ascending">Choice 2</th>
+                    <th class="sorting" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" aria-label=" Control Number: activate to sort column ascending">Choice 3</th>
+                    <th class="sorting" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" aria-label=" Control Number: activate to sort column ascending">Choice 4</th>
+                    <th class="sorting" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" aria-label=" Control Number: activate to sort column ascending">Choice 5</th>
+                    <th class="sorting" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" aria-label=" Control Number: activate to sort column ascending">Choice 6</th>
+                </tr>
+                </thead>
+                <tbody>
+                
+                
+                
+                
+                {% for application in applications %}
+                <tr class="odd">
+                    <td scope="row" class="dtr-control sorting_1" tabindex="0">{{application.id}}</td>
+                    <td>{{ application.student.first_name }}</td>
+                    <td >{{ application.status }}</td>
+                    <td >{{ application.choice1.name }}</td>
+                    <td >{{ application.choice2.name }}</td>
+                    <td >{{ application.choice3.name }}</td>
+                    <td >{{ application.choice4.name }}</td>
+                    <td >{{ application.choice5.name }}</td>
+                    <td >{{ application.choice6.name }}</td>
+                    {% endfor %}
+                     <td>
+                    </td>
+                </tr></tbody>
+            </table></div></div>
+        </div>
+
+    
+      </div>
+
+    </div>
+    {% endblock content %}
+    <!-- /.content -->
+  <!-- /.content-wrapper -->
+
+</div>
+<!-- ./wrapper -->
+
+{% include 'components/js.html' %}
+</body>
+</html>

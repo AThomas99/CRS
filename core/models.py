@@ -38,9 +38,20 @@ class NectaAPI(models.Model):
 
 
 class Course(models.Model):
+    INTEREST = (
+        ('Building', 'Building'),
+        ('Research', 'Research'),
+        ('Health', 'Health'),
+        ('Technology', 'Technology'),
+        ('Programming', 'Programming'),
+        ('Electricity', 'Electricity'),
+        ('Film', 'Film'),
+        ('Experiments', 'Experiments'),
+        ('Laboratory', 'Laboratory'),
+    )
     name = models.CharField(max_length=200, null=False, blank=False)
     department = models.CharField(max_length=200,null=False, blank=False)
-    interest = models.CharField(max_length=200, null=True, blank=True)
+    interest = models.CharField(max_length=200, null=True, blank=True, choices=INTEREST)
     capacity = models.IntegerField()
     duration = models.IntegerField()
     requirements = models.TextField(null=True, blank=True)

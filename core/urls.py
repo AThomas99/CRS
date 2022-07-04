@@ -16,4 +16,10 @@ urlpatterns = [
     path('personal_info/', views.personalInfo, name='personal_info'),
     path('course_preference/', views.preferencePage, name='preference'),
     path('application_status/', views.application_status, name='application_status'),
+    path('user_profile/', views.userProfilePage, name='user_profile'),
+
+
+    path('all_applicants/', views.allApplicants, name='all_applicants'),
+    path('all_students/', views.allStudents, name='all_students'),
+    path('all_courses/', views.allCourses, name='all_courses'),
 ]

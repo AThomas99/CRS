@@ -19,12 +19,54 @@ import pandas as pd
 def adminPage(request):
     students = Student.objects.all()
     courses = Course.objects.all()
+    applications = Application.objects.all()
 
     context = {
         'students': students,
-        'courses': courses
+        'courses': courses,
+        'applications': applications,
     }
     return render(request, 'core/dashboard.html', context)
+
+@login_required(login_url='login')
+def allApplicants(request):
+    students = Student.objects.all()
+    courses = Course.objects.all()
+    applications = Application.objects.all()
+
+    context = {
+        'students': students,
+        'courses': courses,
+        'applications': applications,
+    }
+    return render(request, 'core/all_applicants.html', context)
+
+@login_required(login_url='login')
+def allStudents(request):
+    students = Student.objects.all()
+    courses = Course.objects.all()
+    applications = Application.objects.all()
+
+    context = {
+        'students': students,
+        'courses': courses,
+        'applications': applications,
+    }
+    return render(request, 'core/all_students.html', context)
+
+@login_required(login_url='login')
+def allCourses(request):
+    students = Student.objects.all()
+    courses = Course.objects.all()
+    applications = Application.objects.all()
+
+    context = {
+        'students': students,
+        'courses': courses,
+        'applications': applications,
+    }
+    return render(request, 'core/all_courses.html', context)
+
 
 @unauthenticated_user
 def registerPage(request):
@@ -128,7 +170,6 @@ def logoutUser(request):
 def dashboard(request):
     return render(request, 'core/dashboard.html')
 
-
 @login_required(login_url='login')
 @allowed_users(allowed_roles=['student'])
 def studentPage(request):
@@ -139,22 +180,56 @@ def studentPage(request):
     }
     return render(request, 'core/starter.html', context)
 
-
-
 def personalInfo(request):
     return render(request, 'core/personal_info.html')
 
 def preferencePage(request):
     courses = Course.objects.all()
+    if request.method == 'POST':
+        choice_1 = request.POST['choice-1']
+        choice_2 = request.POST['choice-2']
+        choice_3 = request.POST['choice-3']
+        choice_4 = request.POST['choice-4']
+        choice_5 = request.POST['choice-5']
+        choice_6 = request.POST['choice-6']
+
+        print(choice_1)
+
+        if (choice_1 == choice_2 or choice_1 == choice_3 or choice_1 == choice_4 or choice_1 == choice_5 or choice_1 == choice_6):
+            messages.error(request, 'Course choice selection already exist')
+        elif (choice_2 == choice_1 or choice_2 == choice_3 or choice_2 == choice_4 or choice_2 == choice_5 or choice_2 == choice_6):
+            messages.error(request, 'Course choice selection already exist')
+        elif (choice_3 == choice_2 or choice_3 == choice_1 or choice_3 == choice_4 or choice_3 == choice_5 or choice_3 == choice_6):
+            messages.error(request, 'Course choice selection already exist')
+        elif (choice_4 == choice_3 or choice_4 == choice_2 or choice_4 == choice_1 or choice_4 == choice_5 or choice_4 == choice_6):
+            messages.error(request, 'Course choice selection already exist')
+        elif (choice_5 == choice_2 or choice_5 == choice_3 or choice_5 == choice_4 or choice_5 == choice_1 or choice_5 == choice_6):
+            messages.error(request, 'Course choice selection already exist')
+        elif (choice_6 == choice_2 or choice_6 == choice_3 or choice_6 == choice_4 or choice_6 == choice_5 or choice_6 == choice_1):
+            messages.error(request, 'Course choice selection already exist')
+        
+            application = Application.objects.create(
+                student = Student.objects.get(pk=id),
+                choice1 = choice_1,
+                choice2 = choice_2,
+                choice3 = choice_3,
+                choice4 = choice_4,
+                choice5 = choice_5,
+                choice6 = choice_6,
+            )
+
+        print("Application", application)
+
+        application.save()
+
+
     context = {
         'courses': courses
     }
     return render(request, 'core/preference.html', context)
 
-
 def application_status(request):
     return render(request, 'core/application_status.html')
-
 
 # Collaborative Filtering Algorithm
 def filterCourseByInterest():
@@ -171,7 +246,6 @@ def filterCourseByInterest():
     params={'allCourses':allCourses }
     return params
 
-
 def generateRecommendation(request):
     course=Course.objects.all()
     rating=Rating.objects.all()
@@ -181,7 +255,7 @@ def generateRecommendation(request):
     B=[]
     C=[]
     D=[]
-    #Movie Data Frames
+    #Course Data Frames
     for item in course:
         x=[item.id,item.name,item.interest] 
         y+=[x]
@@ -342,7 +416,6 @@ def courseRating(request):
     else:
         return redirect('login')
 
-
 @login_required(login_url='login')
 @allowed_users(allowed_roles=['student'])
 def courseRecommendation(request):
@@ -350,3 +423,7 @@ def courseRecommendation(request):
     params['recommended']=generateRecommendation(request)
     return render(request,'core/course_recommend.html',params)
 
+@login_required(login_url='login')
+@allowed_users(allowed_roles=['student'])
+def userProfilePage(request):
+    return render(request, 'core/user_profile.html')

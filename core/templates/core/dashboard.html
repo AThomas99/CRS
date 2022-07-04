@@ -1,10 +1,53 @@
-{% extends 'base.html' %}
+{% load static %}
+<!DOCTYPE html>
+<!--
+This is a starter template page. Use this page to start your new project from
+scratch. This page gets rid of all links and provides the needed markup only.
+-->
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Admission system</title>
 
+  {% include 'components/css.html' %}
+</head>
+<body class="hold-transition sidebar-mini">
+<div class="wrapper">
 
-{% block auth %}
-{% include 'components/admin_sidebar.html' %}
-{% include 'components/navbar.html' %}
+  <!-- Navbar -->
+  {% include 'components/navbar.html' %}
+  <!-- /.navbar -->
 
+  <!-- Main Sidebar Container -->
 
+  {% include 'components/admin_sidebar.html' %}
 
-{% endblock auth %}
+  <!-- Main content -->
+  {% block content %}
+  <!-- Content Wrapper. Contains page content -->
+  <div class="content-wrapper">
+      <div class="content-header">
+        <!-- container-fluid -->
+          <div class="container-fluid">
+            <div class="row mb-2">
+              <div class="col-sm-6">
+                <h2 class="m-0">Welcome, {{ user.first_name }} {{ user.last_name }}</h2>
+              </div><!-- /.col -->
+            </div>
+          </div>
+
+    
+      </div>
+
+    </div>
+    {% endblock content %}
+    <!-- /.content -->
+  <!-- /.content-wrapper -->
+
+</div>
+<!-- ./wrapper -->
+
+{% include 'components/js.html' %}
+</body>
+</html>
